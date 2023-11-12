@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<form method="POST">
+    <h3 align="center">Login</h3>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+    </div>
+
+     <button type="submit" class="btn btn-primary">Login</button>
+     <a href="/sign-up" class="btn btn-primary">Criar conta</a>
+    <br>
+    <br>
+    <p>email: visitante@gmail.com | senha: visitante</p>
+    <p>Devido ao plano de hospedagem gratuito, qualquer alteração na aplicação (incluindo contas e registros) é temporária e a aplicação retorna a seu estado inicial :)</p>
+</form>
+
+{% endblock %}
