@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
@@ -34,3 +34,23 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
             return jsonify({})
+
+
+@views.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update(id):
+    note = Note.query.get_or_404(id)
+
+    if request.method == 'POST':
+        note.data = request.form['content']
+
+        try:
+            db.session.commit()
+            flash('Note updated!', category='success')
+            return redirect('/')  # Redireciona para a página inicial após a atualização
+        except:
+            flash('Error updating note!', category='error')
+            return redirect('/update/{}'.format(id))  # Redireciona de volta para a página de atualização em caso de erro
+    else:
+        return render_template('update.html', note=note, user=current_user)
+

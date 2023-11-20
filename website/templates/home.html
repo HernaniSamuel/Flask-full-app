@@ -2,23 +2,22 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 
-<h1 align="center">{{ user.first_name }}'s notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
-        <li class="lit-item-group-item">{{ note.data }}
-            <button type="button" class="close" onClick="deleteNote({{ note.id }})"><span aria-hidden="true">&times;</span></button>
-        </li>
-        <br>
-
-    {% endfor %}
-</ul>
-<br>
-<form method="post">
-    <textarea name="note" id="note" class="form-control"></textarea>
-    <br>
+<h1 id="title">{{ user.first_name }}'s notes</h1>
+<form method="post" id="formNote">
+    <textarea name="note" id="note" class="form-control" placeholder="Write note"></textarea>
     <div align="center">
         <button type="submit" class="btn btn-primary">Add note</button>
     </div>
 </form>
+<ul class="list-group list-group-flush" id="notes" class="ListNotes">
+    {% for note in user.notes %}
+        <li class="lit-item-group-item">
+            <p id="noteData">{{ note.data }}</p>
+            <button type="button"  onClick="deleteNote({{ note.id }})" class="btn btn-secondary" id="delete">Delete</button>
+            <a href="/update/{{ note.id }}" class="btn btn-secondary" id="update">Update</a>
+        </li>
+
+    {% endfor %}
+</ul>
 
 {% endblock %}

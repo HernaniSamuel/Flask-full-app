@@ -1,0 +1,38 @@
+#hostMessage, #FormLogin, #formNote{
+    margin-top: 32px;
+}
+
+#formNote, #note{
+    margin-bottom: 32px;
+}
+
+#delete{
+    background-color: red;
+}
+#update{
+    background-color: green;
+}
+#submit{
+    background-color: green;
+    border-color: green;
+}
+#noteData{
+    margin-left: 10px;
+}
+#title{
+    text-align: center;
+    margin: 32px;
+}
+#notes{
+    list-style: none;
+}
+#notes > li{
+    margin: 10px;
+    border-bottom: 1px solid rgb(204, 197, 197);
+    padding-bottom:20px;
+    gap:12px;
+    text-align: center;
+}
+#content{
+    margin-bottom: 20px;
+}
